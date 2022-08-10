@@ -28,20 +28,19 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public Category addCategory(Category category) {
-        // TODO
-        return null;
+        return categoryRepository.save(category);
     }
 
     @Override
     public Category updateCategory(int id, Category category) {
-        // TODO
-        return null;
+        getCategoryById(id);
+        category.setId(id);
+        return categoryRepository.save(category);
     }
 
     @Override
     public void deleteCategory(int id) {
-        // TODO
-
+        categoryRepository.deleteById(id);
     }
 
 }
