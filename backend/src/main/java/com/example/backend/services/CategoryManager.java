@@ -2,10 +2,12 @@ package com.example.backend.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.backend.entities.Category;
 import com.example.backend.repositories.CategoryRepository;
 import com.example.backend.services.Abstract.CategoryService;
-
+@Service
 public class CategoryManager implements CategoryService {
 
     private final CategoryRepository categoryRepository;
