@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.entities.Author;
+import com.example.backend.entities.models.ApiResponse;
 import com.example.backend.services.Abstract.AuthorService;
 
 @RestController
@@ -26,28 +27,28 @@ public class AuthorController {
     }
 
     @GetMapping
-    public List<Author> getAllAuthors(){
+    public ApiResponse<List<Author>> getAllAuthors(){
         return authorService.getAllAuthors();
     }
 
     @GetMapping("/{id}")
-    public Author getAuthorById(@PathVariable(name="id", required = true) int id){
+    public ApiResponse<Author> getAuthorById(@PathVariable(name="id", required = true) int id){
         return authorService.getAuthorById(id);
     }
 
     @PostMapping
-    public Author addAuthor(@RequestBody Author author){
+    public ApiResponse<Author> addAuthor(@RequestBody Author author){
         return authorService.addAuthor(author);
     }
 
     @PutMapping("/{id}")
-    public Author updateAuthor(@PathVariable(name="id", required = true) int id, @RequestBody Author author){
+    public ApiResponse<Author> updateAuthor(@PathVariable(name="id", required = true) int id, @RequestBody Author author){
         return authorService.updateAuthor(id, author);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAuthor(@PathVariable(name="id", required = true) int id){
-        authorService.deleteAuthor(id);
+    public ApiResponse<?> deleteAuthor(@PathVariable(name="id", required = true) int id){
+        return authorService.deleteAuthor(id);
     }
     
 }

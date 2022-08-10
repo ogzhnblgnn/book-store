@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.backend.entities.Category;
+import com.example.backend.entities.models.ApiResponse;
 import com.example.backend.repositories.CategoryRepository;
 import com.example.backend.services.Abstract.CategoryService;
+
 @Service
 public class CategoryManager implements CategoryService {
 
@@ -17,32 +19,38 @@ public class CategoryManager implements CategoryService {
     }
 
     @Override
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+    public ApiResponse<List<Category>> getAllCategories() {
+        List<Category> categories = categoryRepository.findAll();
+        return ApiResponse.default_OK(categories);
     }
 
     @Override
-    public Category getCategoryById(int id) {
-        return categoryRepository
+    public ApiResponse<Category> getCategoryById(int id) {
+        Category category = categoryRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Category could not found!"));
+
+        return ApiResponse.default_OK(category);
     }
 
     @Override
-    public Category addCategory(Category category) {
-        return categoryRepository.save(category);
+    public ApiResponse<Category> addCategory(Category category) {
+        Category addCategory = categoryRepository.save(category);
+        return ApiResponse.default_CREATED(addCategory);
     }
 
     @Override
-    public Category updateCategory(int id, Category category) {
+    public ApiResponse<Category> updateCategory(int id, Category category) {
         getCategoryById(id);
         category.setId(id);
-        return categoryRepository.save(category);
+        Category updateCategory = categoryRepository.save(category);
+        return ApiResponse.default_ACCEPTED(updateCategory);
     }
 
     @Override
-    public void deleteCategory(int id) {
+    public ApiResponse<?> deleteCategory(int id) {
         categoryRepository.deleteById(id);
+        return ApiResponse.default_NO_CONTENT();
     }
 
 }

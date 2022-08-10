@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.entities.Category;
+import com.example.backend.entities.models.ApiResponse;
 import com.example.backend.services.Abstract.CategoryService;
 
 @RestController
@@ -25,27 +26,27 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<Category> getAllCategories() {
+    public ApiResponse<List<Category>> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
     @GetMapping("/{id}")
-    public Category getCategoryById(@PathVariable(name = "id", required = true) int id) {
+    public ApiResponse<Category> getCategoryById(@PathVariable(name = "id", required = true) int id) {
         return categoryService.getCategoryById(id);
     }
 
     @PostMapping
-    public Category addCategory(@RequestBody Category category) {
+    public ApiResponse<Category> addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category);
     }
 
     @PutMapping("/{id}")
-    public Category updateCategory(@PathVariable(name = "id", required = true) int id, @RequestBody Category category) {
+    public ApiResponse<Category> updateCategory(@PathVariable(name = "id", required = true) int id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable(name = "id", required = true) int id) {
-        categoryService.deleteCategory(id);
+    public ApiResponse<?> deleteCategory(@PathVariable(name = "id", required = true) int id) {
+        return categoryService.deleteCategory(id);
     }
 }

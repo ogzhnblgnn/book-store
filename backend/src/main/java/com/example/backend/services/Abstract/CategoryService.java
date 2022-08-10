@@ -3,14 +3,15 @@ package com.example.backend.services.Abstract;
 import java.util.List;
 
 import com.example.backend.entities.Category;
+import com.example.backend.entities.models.ApiResponse;
 
 public interface CategoryService {
     
-    List<Category> getAllCategories();
-    Category getCategoryById(int id);
-    Category addCategory(Category category);
-    Category updateCategory(int id, Category category);
-    void deleteCategory(int id);
+    ApiResponse<List<Category>> getAllCategories();
+    ApiResponse<Category> getCategoryById(int id);
+    ApiResponse<Category> addCategory(Category category);
+    ApiResponse<Category> updateCategory(int id, Category category);
+    ApiResponse<?> deleteCategory(int id);
 
     
 }

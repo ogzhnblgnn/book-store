@@ -3,12 +3,13 @@ package com.example.backend.services.Abstract;
 import java.util.List;
 
 import com.example.backend.entities.Author;
+import com.example.backend.entities.models.ApiResponse;
 
 public interface AuthorService {
     
-    List<Author> getAllAuthors();
-    Author getAuthorById(int id);
-    Author addAuthor(Author author);
-    Author updateAuthor(int id, Author author);
-    void deleteAuthor(int id);
+    ApiResponse<List<Author>> getAllAuthors();
+    ApiResponse<Author> getAuthorById(int id);
+    ApiResponse<Author> addAuthor(Author author);
+    ApiResponse<Author> updateAuthor(int id, Author author);
+    ApiResponse<?> deleteAuthor(int id);
 }

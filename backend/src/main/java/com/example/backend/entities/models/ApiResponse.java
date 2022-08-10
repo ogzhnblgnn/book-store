@@ -4,9 +4,11 @@ import java.sql.Timestamp;
 
 import org.springframework.http.HttpStatus;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class ApiResponse<T> {
 
     private HttpStatus status;
@@ -29,25 +31,25 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> default_OK(T data){
-        ApiResponse<T> response = new ApiResponse<>();
+        ApiResponse<T> response = new ApiResponse<>(data);
         return response;
     }
 
     public static <T> ApiResponse<T> default_ACCEPTED(T data){
-        ApiResponse<T> response = new ApiResponse<>();
+        ApiResponse<T> response = new ApiResponse<>(data);
         response.setStatus(HttpStatus.ACCEPTED);
         response.setStatusCode(HttpStatus.ACCEPTED.value());
         return response;
     }
 
     public static <T> ApiResponse<T> default_CREATED(T data){
-        ApiResponse<T> response = new ApiResponse<>();
+        ApiResponse<T> response = new ApiResponse<>(data);
         response.setStatus(HttpStatus.CREATED);
         response.setStatusCode(HttpStatus.CREATED.value());
         return response;
     }
 
-    public static <T> ApiResponse<T> default_NO_CONTENT(T data){
+    public static <T> ApiResponse<T> default_NO_CONTENT(){
         ApiResponse<T> response = new ApiResponse<>();
         response.setStatus(HttpStatus.NO_CONTENT);
         response.setStatusCode(HttpStatus.NO_CONTENT.value());
