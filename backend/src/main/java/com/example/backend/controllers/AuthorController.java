@@ -15,7 +15,7 @@ import com.example.backend.entities.Author;
 import com.example.backend.services.Abstract.AuthorService;
 
 @RestController
-@RequestMapping("/api/author")
+@RequestMapping("/api/authors")
 public class AuthorController {
     
 
