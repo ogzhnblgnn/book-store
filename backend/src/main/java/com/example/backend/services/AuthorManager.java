@@ -2,10 +2,13 @@ package com.example.backend.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.backend.entities.Author;
 import com.example.backend.repositories.AuthorRepository;
 import com.example.backend.services.Abstract.AuthorService;
 
+@Service
 public class AuthorManager implements AuthorService {
 
     private final AuthorRepository authorRepository;
