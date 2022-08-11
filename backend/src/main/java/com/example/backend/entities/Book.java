@@ -31,6 +31,8 @@ public class Book {
     private String title;
     @Column(name="description")
     private String description;
+    @Column(name="price")
+    private Double price;
 
     @ManyToOne
     @JoinColumn(name="category_id")
