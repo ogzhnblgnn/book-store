@@ -2,11 +2,14 @@ package com.example.backend.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.backend.entities.Book;
 import com.example.backend.entities.models.ApiResponse;
 import com.example.backend.repositories.BookRepository;
 import com.example.backend.services.Abstract.BookService;
 
+@Service
 public class BookManager implements BookService {
 
     private final BookRepository bookRepository;
