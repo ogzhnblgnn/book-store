@@ -1,6 +1,8 @@
 package com.example.backend.services;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,13 @@ public class AuthorManager implements AuthorService {
     public ApiResponse<?> deleteAuthor(int id) {
         authorRepository.deleteById(id);
         return ApiResponse.default_NO_CONTENT();
+    }
+
+    @Override
+    public Set<Author> getAuthorByIds(List<Integer> authorIds) {
+        Set<Author> authors = new HashSet<>();
+        authorIds.forEach(id -> authors.add(getAuthorById(id).getData()));
+        return authors;
     }
 
 }

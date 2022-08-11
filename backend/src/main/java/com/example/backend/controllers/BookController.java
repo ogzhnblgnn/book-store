@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.entities.Book;
+import com.example.backend.entities.dto.BookDto;
 import com.example.backend.entities.models.ApiResponse;
 import com.example.backend.services.Abstract.BookService;
 
@@ -36,13 +37,13 @@ public class BookController {
     }
 
     @PostMapping
-    public ApiResponse<Book> addBook(@RequestBody Book book) {
-        return bookService.addBook(book);
+    public ApiResponse<Book> addBook(@RequestBody BookDto bookDto) {
+        return bookService.addBook(bookDto);
     }
 
     @PutMapping("/{id}")
-    public ApiResponse<Book> updateBook(@PathVariable(name="id", required = true) int id, @RequestBody Book book){
-        return bookService.updateBook(id, book);
+    public ApiResponse<Book> updateBook(@PathVariable(name="id", required = true) int id, @RequestBody BookDto bookDto){
+        return bookService.updateBook(id, bookDto);
     }
 
     @DeleteMapping("/{id}")
