@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.backend.entities.Category;
 import com.example.backend.entities.models.ApiResponse;
+import com.example.backend.exceptions.notFoundExceptions.CategoryNotFoundException;
 import com.example.backend.repositories.CategoryRepository;
 import com.example.backend.services.Abstract.CategoryService;
 
@@ -28,7 +29,7 @@ public class CategoryManager implements CategoryService {
     public ApiResponse<Category> getCategoryById(int id) {
         Category category = categoryRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Category could not found!"));
+                .orElseThrow(() -> new CategoryNotFoundException(id));
 
         return ApiResponse.default_OK(category);
     }
@@ -49,6 +50,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public ApiResponse<?> deleteCategory(int id) {
+        getCategoryById(id);
         categoryRepository.deleteById(id);
         return ApiResponse.default_NO_CONTENT();
     }

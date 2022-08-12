@@ -10,6 +10,7 @@ import com.example.backend.entities.Book;
 import com.example.backend.entities.Category;
 import com.example.backend.entities.dto.BookDto;
 import com.example.backend.entities.models.ApiResponse;
+import com.example.backend.exceptions.notFoundExceptions.BookNotFoundException;
 import com.example.backend.repositories.BookRepository;
 import com.example.backend.services.Abstract.AuthorService;
 import com.example.backend.services.Abstract.BookService;
@@ -38,7 +39,7 @@ public class BookManager implements BookService {
 
     @Override
     public ApiResponse<Book> getBookById(int id) {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book is could not found"));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
         return ApiResponse.default_OK(book);
     }
 
@@ -56,6 +57,8 @@ public class BookManager implements BookService {
         return ApiResponse.default_CREATED(book);
     }
 
+    // TODO Use mapper!!
+
     @Override
     public ApiResponse<Book> updateBook(int id, BookDto bookDto) {
         Book book = getBookById(id).getData();
@@ -72,6 +75,7 @@ public class BookManager implements BookService {
 
     @Override
     public ApiResponse<?> deleteBook(int id) {
+        getBookById(id);
         bookRepository.deleteById(id);
         return ApiResponse.default_NO_CONTENT();
     }
