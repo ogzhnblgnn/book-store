@@ -13,11 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import logo from "../../images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Books", "Categories", "Authors"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const paths = ["/books", "/categories", "/authors"];
 
 const TopBar = () => {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -28,8 +31,9 @@ const TopBar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (index) => {
     setAnchorElNav(null);
+    navigate(paths[index]);
   };
 
   const handleCloseUserMenu = () => {
@@ -88,8 +92,8 @@ const TopBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem key={page} onClick={() => handleCloseNavMenu(index)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -117,10 +121,10 @@ const TopBar = () => {
             BOOKSTRAP
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleCloseNavMenu(index)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
