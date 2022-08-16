@@ -11,9 +11,9 @@ public interface UserService extends ApplicationUserDao {
     ApiResponse<List<UserDto>> getAllUsers();
     ApiResponse<UserDto> getUserById(int id);
     User getUserByUserName(String username);
-    ApiResponse<UserDto> createUser(UserDto user);
+    ApiResponse<UserDto> createUser(User user);
     User saveUser(User user);
-    ApiResponse<UserDto> updateUser(int id, UserDto user);
-    ApiResponse<UserDto> deleteUser(int id);
+    ApiResponse<UserDto> updateUser(int id, User user);
+    ApiResponse<?> deleteUser(int id);
     
 }
