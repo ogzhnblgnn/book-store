@@ -4,6 +4,6 @@ import java.util.Optional;
 
 import com.example.backend.security.ApplicationUser;
 
-public interface ApplicationUserService {
+public interface ApplicationUserDao {
     Optional<ApplicationUser> selectApplicationUserByUserName(String username);
 }
