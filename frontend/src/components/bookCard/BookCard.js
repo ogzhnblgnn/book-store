@@ -36,11 +36,6 @@ export default function BookCard({ book }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
@@ -52,8 +47,9 @@ export default function BookCard({ book }) {
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/cards/paella.jpg"
+        image="http://smartmobilestudio.com/wp-content/uploads/2012/06/leather-book-preview.png"
         alt="Paella dish"
+        sx={{ objectFit: "contain" }}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
