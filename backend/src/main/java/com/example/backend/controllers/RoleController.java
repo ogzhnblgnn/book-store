@@ -10,14 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.backend.entities.Role;
 import com.example.backend.services.Abstract.RoleService;
 
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/roles")
-@RequiredArgsConstructor
 public class RoleController {
     
     private final RoleService roleService;
+
+    
+
+    public RoleController(RoleService roleService) {
+        this.roleService = roleService;
+    }
 
     @GetMapping
     public ResponseEntity<?> getAllRoles() {
