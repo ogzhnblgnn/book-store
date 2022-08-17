@@ -13,7 +13,7 @@ public class ApplicationUserManager implements UserDetailsService {
 
     private final ApplicationUserDao applicationUserDao;
 
-    public ApplicationUserManager(@Qualifier("fake") ApplicationUserDao applicationUserDao) {
+    public ApplicationUserManager(@Qualifier("mysql") ApplicationUserDao applicationUserDao) {
         this.applicationUserDao = applicationUserDao;
     }
 
