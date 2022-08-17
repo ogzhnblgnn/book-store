@@ -2,6 +2,7 @@ package com.example.backend.controllers;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,16 +37,19 @@ public class CategoryController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('category:post')")
     public ApiResponse<Category> addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('category:put')")
     public ApiResponse<Category> updateCategory(@PathVariable(name = "id", required = true) int id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('category:delete')")
     public ApiResponse<?> deleteCategory(@PathVariable(name = "id", required = true) int id) {
         return categoryService.deleteCategory(id);
     }
