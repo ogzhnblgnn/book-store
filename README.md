@@ -1,23 +1,23 @@
 # book-store
 
-Veri tabanını sıfırla.
+1-Veri tabanını sıfırla.
 
-bookstrap isimli boş bir schema oluştur.
+2-bookstrap isimli boş bir schema oluştur.
 
-ApplicationUserManager içerisinde @Qualifier(fake) uygulamayı başlat.
+3-ApplicationUserManager içerisinde @Qualifier(fake) uygulamayı başlat.
 
-User ve Admin Rollerini post et..
+4-User ve Admin Rollerini post et..
 
-User ve Admin kullanıcıları oluştur.
+5-User ve Admin kullanıcıları oluştur.
 
-Unutma varsayılan olarak tüm kullanıcılar USER rolü ile eklendi. Roller dağıtımını yapmayı unutma. Bu veri tabanında users_role tablosunu kullanarak yapabilirsin.
+6-Unutma varsayılan olarak tüm kullanıcılar USER rolü ile eklendi. Roller dağıtımını yapmayı unutma. Bu veri tabanında users_role tablosunu kullanarak yapabilirsin.
 
-ApplicationUserManager içerisinde @Qualifier("mysql") uygulamayı yeniden başlat.
+7-ApplicationUserManager içerisinde @Qualifier("mysql") uygulamayı yeniden başlat.
 
-Postman'de kullanıcılar için koleksiyon oluştur.
+8-Postman'de kullanıcılar için koleksiyon oluştur.
 
-{{accessToken}} değişkenini koleksiyonlar için tanımla.
+9-{{accessToken}} değişkenini koleksiyonlar için tanımla.
 
-Login testine bak.
+10-Login testine bak.
 
-Resources için erişim senaryoları uygula.
+11-Resources için erişim senaryoları uygula.
